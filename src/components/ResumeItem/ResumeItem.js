@@ -1,11 +1,11 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import "./ResumeItem.css";
-import Switch from "../Switch/Switch";
 import { useState } from "react";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import Switch from "../switch/Switch";
 
 function ResumeItem({ itemData, onToggle, onEdit }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
