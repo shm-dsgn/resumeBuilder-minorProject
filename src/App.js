@@ -10,7 +10,7 @@ import {
   restrictToWindowEdges,
 } from "@dnd-kit/modifiers";
 import "./App.css";
-import ResumeItem from "./ResumeItem";
+import ResumeItem from "./components/ResumeItem/ResumeItem";
 
 function App() {
   const [items, setItems] = useState([
