@@ -1,0 +1,44 @@
+.toggle-bg-left,
+.toggle-bg-right {
+  height: 24px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.toggle-bg-left {
+  background: #e6e6e6;
+  border: 2px solid #8b8b8b;
+}
+
+.toggle-bg-right {
+  background: #d0bcff;
+  border: 2px solid #d0bcff;
+}
+
+.toggle-left,
+.toggle-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle-left {
+  background: #8b8b8b;
+  margin: 2px;
+}
+
+.toggle-right {
+  background: #381e72;
+  margin: 5px 2px 5px 25px;
+}
+
+.close-icon,
+.checkmark-icon {
+  color: white;
+}

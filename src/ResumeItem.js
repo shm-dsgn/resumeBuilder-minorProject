@@ -1,7 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import "./ResumeItem.css";
-import Switch from "@mui/material/Switch";
+import Switch from "../src/components/switch/Switch";
 import { useState } from "react";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -64,7 +64,7 @@ function ResumeItem({ itemData, onToggle, onEdit }) {
             <EditOutlinedIcon fontSize="18px" />
           </div>
         ) : (
-          <button onClick={handleSave}>Save</button>
+          <button onClick={handleSave} className="edit-save-btn">Save</button>
         )}
         <div className="toggle-switch" onClick={handleToggle}>
           <Switch checked={itemData.enabled} />
