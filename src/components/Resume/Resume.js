@@ -6,10 +6,6 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 
-import {
-  restrictToVerticalAxis,
-  restrictToWindowEdges,
-} from "@dnd-kit/modifiers";
 import ResumeItem from "../ResumeItem/ResumeItem";
 
 const Resume = () => {
@@ -109,7 +105,7 @@ const Resume = () => {
       };
     
       const [editId, setEditId] = useState(-1);
-      const printEditId = (id) => {
+      const onEditId = (id) => {
         setEditId(id);
       };
 
@@ -118,7 +114,6 @@ const Resume = () => {
         <SortableContext
           items={items}
           strategy={verticalListSortingStrategy}
-          modifiers={[restrictToVerticalAxis, restrictToWindowEdges]}
         >
           {items.map((item) => (
             <ResumeItem
@@ -127,7 +122,7 @@ const Resume = () => {
               onEdit={handleEdit}
               onToggle={handleToggle}
               editId={editId}
-              onPrintEditId={printEditId}
+              onEditId={onEditId}
             />
           ))}
         </SortableContext>

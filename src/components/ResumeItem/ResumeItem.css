@@ -3,8 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.75rem;
   border-bottom: 2px solid #e6e6e6;
+  border-radius: 4px;
   width: 85%;
   background-color: #ffffff;
   touch-action: none;
@@ -35,6 +36,7 @@
   margin: 0;
   padding-bottom: 4px;
   color: #333333;
+  font-size: 14px;
 }
 
 .drag-icon,

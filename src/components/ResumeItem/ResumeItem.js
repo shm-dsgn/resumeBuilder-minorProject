@@ -2,18 +2,20 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import "./ResumeItem.css";
 import { useState } from "react";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+
+import  {MdInfoOutline, MdModeEditOutline, MdOutlineMenu} from "react-icons/md";
 import Switch from "../switch/Switch";
 
-function ResumeItem({ itemData, onToggle, onEdit, editId, onPrintEditId }) {
-  const { attributes, listeners, setNodeRef, transform, transition } =
+function ResumeItem({ itemData, onToggle, onEdit, editId, onEditId }) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id: itemData.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    border: isDragging ? "#381e72 solid 1px" : "",
+    zIndex: isDragging ? 2 : 1,
+    boxShadow: isDragging ? "0px 0px 5px 0px #381e72" : "",
   };
 
   const [isEdit, setIsEditing] = useState(false);
@@ -26,21 +28,21 @@ function ResumeItem({ itemData, onToggle, onEdit, editId, onPrintEditId }) {
 
   const handleEdit = () => {
     setIsEditing(true);
-    onPrintEditId(itemData.id);
+    onEditId(itemData.id);
   };
 
   const handleSave = () => {
     if (itemData.title !== newTitle) {
       onEdit(itemData.title, newTitle);
       setIsEditing(false);
-      onPrintEditId(-1);
+      onEditId(-1);
     }
   };
 
   const handleCancel = () => {
     setNewTitle(itemData.title);
     setIsEditing(false);
-    onPrintEditId(-1);
+    onEditId(-1);
   };
 
   const className =
@@ -54,10 +56,10 @@ function ResumeItem({ itemData, onToggle, onEdit, editId, onPrintEditId }) {
     <div style={style} ref={setNodeRef} {...attributes} className={className}>
       <div className="item__left">
         <div className="drag-icon" {...listeners}>
-          <MenuOutlinedIcon />
+          <MdOutlineMenu fontSize="24px"/>
         </div>
         <div className="info-icon" onClick={() => setShowDesc(!showDesc)}>
-          <InfoOutlinedIcon />
+          <MdInfoOutline fontSize="24px"/>
         </div>
 
         {isEdit ? (
@@ -79,7 +81,7 @@ function ResumeItem({ itemData, onToggle, onEdit, editId, onPrintEditId }) {
       <div className="item__right">
         {!isEdit ? (
           <div className="edit-icon" onClick={handleEdit}>
-            <EditOutlinedIcon fontSize="18px" />
+            <MdModeEditOutline fontSize="18px" />
           </div>
         ) : (
           <div>
