@@ -97,18 +97,19 @@ function App() {
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
-    // console.log("active", active.id);
-    // console.log("over", over.id);
-
+    
     if (!active.id !== over.id) {
       setItems((items) => {
         const oldIndex = items.findIndex((item) => item.id === active.id);
         const newIndex = items.findIndex((item) => item.id === over.id);
-
-        // console.log(arrayMove(items, oldIndex, newIndex));
         return arrayMove(items, oldIndex, newIndex);
       });
     }
+  };
+
+  const [editId, setEditId] = useState(-1);
+  const printEditId = (id) => {
+    setEditId(id);
   };
 
   return (
@@ -126,10 +127,11 @@ function App() {
               itemData={item}
               onEdit={handleEdit}
               onToggle={handleToggle}
+              editId={editId}
+              onPrintEditId={printEditId}
             />
           ))}
         </SortableContext>
-        {/* {anyChanges && <button className="save-next-btn">Save and Next</button>} */}
         <button className="save-next-btn">Save and Next</button>
       </DndContext>
     </div>

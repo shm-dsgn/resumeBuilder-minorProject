@@ -7,7 +7,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Switch from "../switch/Switch";
 
-function ResumeItem({ itemData, onToggle, onEdit }) {
+function ResumeItem({ itemData, onToggle, onEdit, editId, onPrintEditId }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: itemData.id });
 
@@ -26,20 +26,32 @@ function ResumeItem({ itemData, onToggle, onEdit }) {
 
   const handleEdit = () => {
     setIsEditing(true);
+    onPrintEditId(itemData.id);
   };
 
   const handleSave = () => {
-    onEdit(itemData.title, newTitle);
-    setIsEditing(false);
+    if (itemData.title !== newTitle) {
+      onEdit(itemData.title, newTitle);
+      setIsEditing(false);
+      onPrintEditId(-1);
+    }
   };
 
   const handleCancel = () => {
     setNewTitle(itemData.title);
     setIsEditing(false);
+    onPrintEditId(-1);
   };
 
+  const className =
+    editId === -1
+      ? "item"
+      : editId === itemData.id
+      ? "item"
+      : "item item-disable";
+
   return (
-    <div style={style} ref={setNodeRef} {...attributes} className="item">
+    <div style={style} ref={setNodeRef} {...attributes} className={className}>
       <div className="item__left">
         <div className="drag-icon" {...listeners}>
           <MenuOutlinedIcon />
@@ -63,6 +75,7 @@ function ResumeItem({ itemData, onToggle, onEdit }) {
           </div>
         )}
       </div>
+
       <div className="item__right">
         {!isEdit ? (
           <div className="edit-icon" onClick={handleEdit}>

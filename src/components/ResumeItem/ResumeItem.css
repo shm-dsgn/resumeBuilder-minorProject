@@ -42,11 +42,11 @@
   margin-right: 1rem;
 }
 
-.drag-icon{
+.drag-icon {
   cursor: grab;
 }
 
-.info-icon{
+.info-icon {
   cursor: pointer;
 }
 
@@ -62,13 +62,22 @@
   height: 28px;
 }
 
-.edit-save-btn, .edit-cancel-btn{
+.edit-save-btn,
+.edit-cancel-btn {
   margin-right: 0.5rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 
-.inactive{
+.inactive {
   color: #afafaf;
+  cursor: not-allowed;
+}
+
+.item-disable {
+  background-color: #eaeaea;
+  cursor: not-allowed;
+  pointer-events: none;
+  color: #b5b5b5;
 }
