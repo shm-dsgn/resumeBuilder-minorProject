@@ -85,7 +85,6 @@ function App() {
         item.title === title ? { ...item, enabled: !item.enabled } : item
       )
     );
-    setAnyChanges(true);
   };
 
   const handleEdit = (oldTitle, newTitle) => {
@@ -94,7 +93,6 @@ function App() {
         item.title === oldTitle ? { ...item, title: newTitle } : item
       )
     );
-    setAnyChanges(true);
   };
 
   const handleDragEnd = (event) => {
@@ -111,12 +109,7 @@ function App() {
         return arrayMove(items, oldIndex, newIndex);
       });
     }
-    setAnyChanges(true);
-    // console.log("drag end");
   };
-
-  console.log(items);
-  const [anyChanges, setAnyChanges] = useState(false);
 
   return (
     <div className="App">
@@ -136,7 +129,8 @@ function App() {
             />
           ))}
         </SortableContext>
-        {anyChanges && <button className="save-next-btn">Save and Next</button>}
+        {/* {anyChanges && <button className="save-next-btn">Save and Next</button>} */}
+        <button className="save-next-btn">Save and Next</button>
       </DndContext>
     </div>
   );

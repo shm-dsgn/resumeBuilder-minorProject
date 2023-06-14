@@ -62,9 +62,13 @@
   height: 28px;
 }
 
-.edit-save-btn{
+.edit-save-btn, .edit-cancel-btn{
   margin-right: 0.5rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.inactive{
+  color: #afafaf;
 }

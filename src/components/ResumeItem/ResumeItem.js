@@ -33,6 +33,11 @@ function ResumeItem({ itemData, onToggle, onEdit }) {
     setIsEditing(false);
   };
 
+  const handleCancel = () => {
+    setNewTitle(itemData.title);
+    setIsEditing(false);
+  };
+
   return (
     <div style={style} ref={setNodeRef} {...attributes} className="item">
       <div className="item__left">
@@ -64,7 +69,21 @@ function ResumeItem({ itemData, onToggle, onEdit }) {
             <EditOutlinedIcon fontSize="18px" />
           </div>
         ) : (
-          <button onClick={handleSave} className="edit-save-btn">Save</button>
+          <div>
+            <button
+              onClick={handleSave}
+              className={
+                itemData.title !== newTitle
+                  ? "edit-save-btn"
+                  : "edit-save-btn inactive"
+              }
+            >
+              Save
+            </button>
+            <button onClick={handleCancel} className="edit-cancel-btn">
+              Cancel
+            </button>
+          </div>
         )}
         <div className="toggle-switch" onClick={handleToggle}>
           <Switch checked={itemData.enabled} />
