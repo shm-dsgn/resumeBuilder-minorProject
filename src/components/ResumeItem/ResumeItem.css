@@ -77,7 +77,6 @@
 
 .item-disable {
   background-color: #eaeaea;
-  cursor: not-allowed;
   pointer-events: none;
   color: #b5b5b5;
 }
